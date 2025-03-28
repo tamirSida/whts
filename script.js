@@ -3,13 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const messageInput = document.getElementById('message-input');
     const sendBtn = document.getElementById('send-btn');
 
-    // Database of response messages (you will fill these out)
+    // Database of response messages
     const responseDatabase = [
-
-        // Add more responses here as needed
         "את יפה",
         "אני מתגעגע",
         "את צודקת"
+
     ];
 
     // Add event listeners for sending messages

@@ -5,24 +5,38 @@
     font-family: 'Open Sans', Arial, sans-serif;
 }
 
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     background-color: #f0f2f5;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .chat-container {
     width: 100%;
-    max-width: 450px;
-    height: 100vh;
-    max-height: 700px;
+    height: 100%;
     background-color: #fff;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .chat-header {
@@ -32,6 +46,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
+    z-index: 10;
 }
 
 .profile-container {
@@ -73,8 +89,11 @@ body {
     background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_a4be90e1fcd3d9a1cb5a31eb9a3c1cdd.png');
     background-color: #e5ddd5;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
+    position: relative;
+    height: calc(100% - 120px); /* Adjust based on header and input heights */
 }
 
 .message {
@@ -110,9 +129,13 @@ body {
 .chat-input {
     padding: 10px 15px;
     background-color: #f0f2f5;
-    position: sticky;
+    position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 10;
+    border-top: 1px solid #ddd;
+    flex-shrink: 0;
 }
 
 .input-container {
@@ -162,12 +185,42 @@ body {
     font-style: italic;
 }
 
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+    body {
+        height: -webkit-fill-available;
+    }
+
+    .chat-container {
+        height: -webkit-fill-available;
+    }
+
+    .chat-messages {
+        height: calc(100vh - 120px);
+        height: calc(-webkit-fill-available - 120px);
+    }
+
+    .chat-input {
+        padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    }
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 480px) {
     .chat-container {
-        height: 100vh;
-        max-height: none;
-        width: 100%;
         max-width: none;
+        border-radius: 0;
+    }
+
+    .message {
+        max-width: 80%;
+    }
+
+    .chat-header, .chat-input {
+        padding: 8px 10px;
+    }
+
+    .input-container {
+        padding: 5px 8px;
     }
 }
