@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="chat-container">
+    <div class="chat-header">
+        <div class="profile-container">
+            <img src="images/pic.JPG" alt="Profile Picture" class="profile-pic">
+            <div class="contact-info">
+                <h3 class="contact-name">תמיר סידה רייכמן</h3>
+                <p class="status">online</p>
+            </div>
+        </div>
+        <div class="header-icons">
+            <span class="icon">&#128247;</span>
+            <span class="icon">&#128222;</span>
+            <span class="icon">&#8942;</span>
+        </div>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+        <!-- Messages will be added here via JavaScript -->
+    </div>
+
+    <div class="chat-input">
+        <div class="input-container">
+            <span class="emoji-icon">&#128512;</span>
+            <span class="attach-icon">&#128206;</span>
+            <input type="text" id="message-input" placeholder="Type a message">
+            <button id="send-btn">&#10148;</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
